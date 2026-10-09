@@ -1,0 +1,72 @@
+:root{
+  --ink:#171a2b; --mute:#656c85; --line:#e6e4f5;
+  --bg-a:#f3efff; --bg-b:#fdf6ee;
+  --card:#ffffff;
+  --accent:#6a4cff; --accent-2:#ff7a59;
+  --r:20px;
+  --shadow:0 1px 2px rgba(23,26,43,.04), 0 18px 40px -16px rgba(23,26,43,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#f1f0f9; --mute:#a9adc9; --line:#2a2d45;
+    --bg-a:#131420; --bg-b:#191a2c;
+    --card:#1c1e32;
+    --accent:#9b86ff; --accent-2:#ff9478;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 18px 40px -16px rgba(0,0,0,.55);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font:16px/1.6 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(1100px 500px at 12% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent),
+    radial-gradient(900px 480px at 100% 0%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent),
+    linear-gradient(180deg, var(--bg-a), var(--bg-b));
+  background-attachment:fixed;
+  min-height:100vh;
+}
+h1,h2,h3{font-family:"Inter",sans-serif;letter-spacing:-.03em;line-height:1.1;margin:0 0 .4em;font-weight:800}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+.bar{background:color-mix(in srgb, var(--card) 80%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.bar .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px;flex-wrap:wrap}
+.bar b{font-weight:800;letter-spacing:-.02em}
+.bar .code{color:var(--mute);font-size:.9rem;font-weight:500}
+.bar a.gh{color:var(--ink);text-decoration:none;font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:6px}
+.bar a.gh:hover{color:var(--accent)}
+
+.head{padding:60px 0 20px;text-align:center}
+.head .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb, var(--accent) 12%, transparent);padding:6px 14px;border-radius:99px;margin-bottom:18px}
+.head h1{font-size:clamp(2.1rem,5.5vw,3.2rem)}
+.head h1 span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.head p{max-width:54ch;margin:0 auto;color:var(--mute);font-size:1.1rem}
+
+.people{display:flex;justify-content:center;gap:14px;margin:26px 0 6px;flex-wrap:wrap}
+.people .chip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:6px 14px 6px 6px;border-radius:99px;box-shadow:var(--shadow);font-weight:600;font-size:.9rem}
+.people .chip img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+
+main.wrap{padding-bottom:60px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:38px}
+.card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:26px 24px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);
+  transition:transform .22s ease, box-shadow .22s ease;overflow:hidden;display:flex;flex-direction:column;gap:8px;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:64px;
+  background:linear-gradient(120deg, var(--accent), var(--accent-2));opacity:.12;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 1px 2px rgba(23,26,43,.05), 0 26px 50px -18px rgba(23,26,43,.26)}
+.card .num{position:relative;z-index:1;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));font-size:.95rem}
+.card .stack{position:relative;z-index:1;align-self:flex-end;margin-top:-30px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb, var(--accent) 12%, transparent);padding:4px 10px;border-radius:99px}
+.card b{position:relative;z-index:1;font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
+.card span.desc{position:relative;z-index:1;color:var(--mute);font-size:.92rem}
+.card .go{position:relative;z-index:1;margin-top:8px;font-weight:700;font-size:.88rem;color:var(--accent)}
+
+footer{color:var(--mute);font-size:.88rem;padding:28px 0 48px;border-top:1px solid var(--line);margin-top:20px;text-align:center}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
