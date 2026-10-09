@@ -8,6 +8,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* extra styles for this version (search box, initials avatar, connect button) */
+  .search{margin-top:30px}
+  .count{color:var(--mute);font-size:.9rem;margin:10px 2px 0}
+  .pcard .initials{width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font:800 2.2rem "Inter",sans-serif;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    border:3px solid var(--card);letter-spacing:.02em}
+  .pcard .actions{position:relative;z-index:1;margin-top:18px}
+  .pcard .actions button{padding:9px 20px;font-size:.88rem}
+  .noresult{grid-column:1/-1;text-align:center;color:var(--mute);padding:30px 0}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
@@ -18,47 +29,121 @@
     <div class="head">
       <span class="eyebrow">React · Props</span>
       <h1>React Profile Card</h1>
-      <p>A single reusable <code>ProfileCard</code> component, rendered twice with different data passed in through props.</p>
+      <p>A single reusable <code>ProfileCard</code> component, rendered once per person with different data passed in through props.</p>
     </div>
     <div id="root"></div>
     <div class="panel">
       <h2>How it works</h2>
-      <p style="color:var(--mute);margin:0">One <code>ProfileCard</code> component accepts <code>name</code>, <code>role</code>, <code>image</code>, <code>bio</code> and <code>tags</code> as props. <code>App</code> holds an array of people and renders one card per entry with <code>.map()</code>, so adding a new person never means writing new markup.</p>
+      <p style="color:var(--mute);margin:0"><code>ProfileCard</code> accepts <code>name</code>, <code>role</code>, <code>image</code>, <code>bio</code> and <code>tags</code> as props. <code>App</code> holds an array of 6 people and renders one card per entry with <code>.map()</code>, so adding a new person never means writing new markup. <code>useState</code> powers the search box and the Connect button, and a photo that fails to load falls back to the person's initials.</p>
     </div>
     <div class="nav"><a href="../assignment-3-form-validation/index.html">← Assignment 3</a><a href="../assignment-5-controlled-react-form/index.html">Assignment 5 →</a></div>
   </main>
   <div class="wrap"><footer>Yash Babaso Toraskar · MIT World Peace University, Pune</footer></div>
   <script type="text/babel">
+    const { useState } = React;
+
+    function initialsOf(name) {
+      return name.split(" ").filter(Boolean).map(w => w[0]).slice(0, 2).join("").toUpperCase();
+    }
+
+    // Shows the photo; if there is no photo (or it fails to load) shows initials instead.
+    function Avatar({ name, image }) {
+      const [broken, setBroken] = useState(false);
+      if (!image || broken) return <div className="initials" aria-label={name}>{initialsOf(name)}</div>;
+      return <img src={image} alt={name} onError={() => setBroken(true)} />;
+    }
+
     function ProfileCard({ name, role, image, bio, tags }) {
+      const [connected, setConnected] = useState(false);
       return (
         <article className="pcard">
-          <div className="ring"><img src={image} alt={name} /></div>
+          <div className="ring"><Avatar name={name} image={image} /></div>
           <h3>{name}</h3>
           <div className="role">{role}</div>
           <p className="bio">{bio}</p>
           <div className="tags">{tags.map(t => <span key={t}>{t}</span>)}</div>
+          <div className="actions">
+            <button className={connected ? "ghost" : ""} onClick={() => setConnected(!connected)}>
+              {connected ? "✓ Connected" : "Connect"}
+            </button>
+          </div>
         </article>
       );
     }
 
+    const people = [
+      {
+        name: "Yashraj Toraskar",
+        role: "Full Stack Developer",
+        image: "yashraj.jpg",
+        bio: "MCA student building projects across the MERN stack, from React UIs to Express APIs.",
+        tags: ["React", "Node.js", "MongoDB"]
+      },
+      {
+        name: "Aarav Sharma",
+        role: "Backend Developer",
+        image: "aarav.jpg",
+        bio: "Designs REST APIs and database schemas, and likes keeping response times low.",
+        tags: ["Node.js", "Express", "SQL"]
+      },
+      {
+        name: "Priya Nair",
+        role: "UI/UX Designer",
+        image: "priya.jpg",
+        bio: "Sketches flows in Figma first, then helps developers ship them pixel-perfect.",
+        tags: ["Figma", "Design", "CSS"]
+      },
+      {
+        name: "Rohan Deshmukh",
+        role: "DevOps Engineer",
+        image: "rohan.jpg",
+        bio: "Automates builds and deployments so that every push reaches production safely.",
+        tags: ["Git", "Docker", "CI/CD"]
+      },
+      {
+        name: "Sneha Kulkarni",
+        role: "Data Analyst",
+        image: "sneha.jpg",
+        bio: "Turns messy datasets into clear dashboards and simple stories for decision makers.",
+        tags: ["Python", "Pandas", "Power BI"]
+      },
+      {
+        name: "Karan Mehta",
+        role: "Mobile App Developer",
+        image: "karan.jpg",
+        bio: "Builds cross-platform apps and cares a lot about smooth animations and offline support.",
+        tags: ["React Native", "Firebase", "JavaScript"]
+      }
+    ];
+
     function App() {
-      const people = [
-        {
-          name: "Yashraj Toraskar",
-          role: "Full Stack Developer",
-          image: "yashraj.jpg",
-          bio: "MCA student building projects across the MERN stack, from React UIs to Express APIs.",
-          tags: ["React", "Node.js", "MongoDB"]
-        },
-        {
-          name: "Vaishnavi",
-          role: "Frontend Developer",
-          image: "vaishnavi.jpg",
-          bio: "Enjoys turning clean designs into fast, accessible interfaces with React and modern CSS.",
-          tags: ["React", "JavaScript", "UI/UX"]
-        }
-      ];
-      return <div className="profiles">{people.map(p => <ProfileCard key={p.name} {...p} />)}</div>;
+      const [q, setQ] = useState("");
+      const term = q.trim().toLowerCase();
+      const shown = people.filter(p =>
+        !term ||
+        p.name.toLowerCase().includes(term) ||
+        p.role.toLowerCase().includes(term) ||
+        p.tags.some(t => t.toLowerCase().includes(term))
+      );
+      return (
+        <div>
+          <div className="search">
+            <input
+              type="search"
+              value={q}
+              onChange={e => setQ(e.target.value)}
+              placeholder="Search by name, role or skill…"
+              aria-label="Search profiles"
+            />
+            <p className="count">Showing {shown.length} of {people.length} profiles</p>
+          </div>
+          <div className="profiles">
+            {shown.length
+              ? shown.map(p => <ProfileCard key={p.name} {...p} />)
+              : <p className="noresult">No profile matches “{q}”.</p>}
+          </div>
+        </div>
+      );
     }
 
     ReactDOM.createRoot(document.getElementById("root")).render(<App />);
