@@ -1,6 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React Profile Card | MCA40290</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script></head><body><div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 4</span></div></div><main class="wrap"><div class="head"><h1>React Profile Card</h1><p class="task">One ProfileCard component, reused with different props: name, image URL and description.</p></div><div id="root"></div></main><div class="wrap"><footer>MIT World Peace University, Pune</footer></div><script type="text/babel">
-function ProfileCard({name,image,description}){return(<article className="pcard"><img src={image} alt={name}/><h3>{name}</h3><p>{description}</p></article>)}
-function App(){const people=[{name:"Aarav Sharma",image:"https://i.pravatar.cc/200?img=12",description:"Frontend developer who loves clean UI."},{name:"Meera Kulkarni",image:"https://i.pravatar.cc/200?img=47",description:"Backend engineer building fast APIs."},{name:"Rohan Patil",image:"https://i.pravatar.cc/200?img=33",description:"MERN student exploring MongoDB."}];
-return <div className="profiles">{people.map(p=><ProfileCard key={p.name} {...p}/>)}</div>}
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>React Profile Card | MCA40290</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+  <div class="bar">
+    <div class="wrap top">
+      <b>Lab on Full Stack Development</b>
+      <span class="code">MCA40290 · Assignment 4</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="head">
+      <span class="eyebrow">React · Props</span>
+      <h1>React Profile Card</h1>
+      <p>A single reusable <code>ProfileCard</code> component, rendered twice with different data passed in through props.</p>
+    </div>
+
+    <div id="root"></div>
+
+    <div class="panel">
+      <h2>How it works</h2>
+      <p>One <code>ProfileCard</code> component accepts <code>name</code>, <code>role</code>, <code>image</code>, <code>bio</code> and <code>tags</code> as props. The <code>App</code> component holds an array of people and renders one card per entry with <code>.map()</code>, so adding a new person never means writing new markup.</p>
+    </div>
+
+    <div class="nav">
+      <a href="../assignment-3-form-validation/index.html">← Previous</a>
+      <a href="../assignment-5-controlled-react-form/index.html">Next →</a>
+    </div>
+  </main>
+  <div class="wrap"><footer>MIT World Peace University, Pune</footer></div>
+
+  <script type="text/babel">
+    function ProfileCard({ name, role, image, bio, tags }) {
+      return (
+        <article className="pcard">
+          <div className="ring"><img src={image} alt={name} /></div>
+          <h3>{name}</h3>
+          <div className="role">{role}</div>
+          <p className="bio">{bio}</p>
+          <div className="tags">{tags.map(t => <span key={t}>{t}</span>)}</div>
+        </article>
+      );
+    }
+
+    function App() {
+      const people = [
+        {
+          name: "Yashraj Toraskar",
+          role: "Full Stack Developer",
+          image: "yashraj.jpg",
+          bio: "MCA student building projects across the MERN stack, from React UIs to Express APIs.",
+          tags: ["React", "Node.js", "MongoDB"]
+        },
+        {
+          name: "Vaishnavi",
+          role: "Frontend Developer",
+          image: "vaishnavi.jpg",
+          bio: "Enjoys turning clean designs into fast, accessible interfaces with React and modern CSS.",
+          tags: ["React", "JavaScript", "UI/UX"]
+        }
+      ];
+      return (
+        <div className="profiles">
+          {people.map(p => <ProfileCard key={p.name} {...p} />)}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
