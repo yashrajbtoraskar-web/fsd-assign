@@ -1,4 +1,4 @@
-# Assignment 2: DOM To-Do List
+# Assignment 2: DOM-based To-Do List
 Course MCA40290, Lab on Full Stack Development.
 
 Run: double-click `index.html`.

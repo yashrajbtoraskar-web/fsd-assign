@@ -1,7 +1,46 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React Counter | MCA40290</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script></head><body><div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 6</span></div></div><main class="wrap"><div class="head"><h1>React Counter</h1><p class="task">Increment, decrement and reset the value with the useState hook.</p></div><div id="root"></div></main><div class="wrap"><footer>MIT World Peace University, Pune</footer></div><script type="text/babel">
-const {useState}=React;
-function App(){const [n,setN]=useState(0);
-return(<div className="panel counter"><div className="n" aria-live="polite" style={{color:n<0?"var(--bad)":n>0?"var(--ok)":"inherit"}}>{n}</div>
-<div className="row"><button onClick={()=>setN(n-1)} aria-label="Decrement">− Decrease</button><button className="ghost" onClick={()=>setN(0)}>Reset</button><button onClick={()=>setN(n+1)} aria-label="Increment">+ Increase</button></div></div>)}
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>React Counter | MCA40290</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+  <div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 6</span></div></div>
+  <main class="wrap">
+    <div class="head">
+      <span class="eyebrow">React · useState</span>
+      <h1>React Counter</h1>
+      <p>Increment, decrement and reset the value with the <code>useState</code> hook.</p>
+    </div>
+    <div id="root"></div>
+    <div class="nav"><a href="../a5/index.html">← Assignment 5</a><a href="../a1/index.html">Assignment 1 →</a></div>
+  </main>
+  <div class="wrap"><footer>Yash Babaso Toraskar · MIT World Peace University, Pune</footer></div>
+  <script type="text/babel">
+    const { useState } = React;
+    function App() {
+      const [n, setN] = useState(0);
+      const color = n < 0 ? "var(--bad)" : n > 0 ? "var(--ok)" : "var(--ink)";
+      return (
+        <div className="panel counter">
+          <div className="n" aria-live="polite" style={{ color }}>{n}</div>
+          <div className="row">
+            <button onClick={() => setN(n - 1)} aria-label="Decrement">− Decrease</button>
+            <button className="ghost" onClick={() => setN(0)}>Reset</button>
+            <button onClick={() => setN(n + 1)} aria-label="Increment">+ Increase</button>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

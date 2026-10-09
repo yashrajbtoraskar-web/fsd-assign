@@ -1,11 +1,61 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Controlled React Form | MCA40290</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script></head><body><div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 5</span></div></div><main class="wrap"><div class="head"><h1>Controlled React Form</h1><p class="task">Every input is controlled by React state, so the preview below updates as you type.</p></div><div id="root"></div></main><div class="wrap"><footer>MIT World Peace University, Pune</footer></div><script type="text/babel">
-const {useState}=React;
-function App(){const [f,setF]=useState({name:"",email:"",course:"MCA",bio:""});
-const on=e=>setF({...f,[e.target.name]:e.target.value});
-return(<div><div className="panel"><label htmlFor="n">Name</label><input id="n" name="name" value={f.name} onChange={on}/>
-<label htmlFor="e">Email</label><input id="e" name="email" type="email" value={f.email} onChange={on}/>
-<label htmlFor="c">Course</label><select id="c" name="course" value={f.course} onChange={on}><option>MCA</option><option>MBA</option><option>B.Tech</option></select>
-<label htmlFor="b">About you</label><textarea id="b" name="bio" rows="3" value={f.bio} onChange={on}/></div>
-<div className="panel"><h2>Live preview</h2><dl className="pre"><dt>Name</dt><dd>{f.name||"Not entered yet"}</dd><dt>Email</dt><dd>{f.email||"Not entered yet"}</dd><dt>Course</dt><dd>{f.course}</dd><dt>About</dt><dd>{f.bio||"Not entered yet"}</dd></dl></div></div>)}
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Controlled React Form | MCA40290</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+  <div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 5</span></div></div>
+  <main class="wrap">
+    <div class="head">
+      <span class="eyebrow">React · useState</span>
+      <h1>Controlled React Form</h1>
+      <p>Every input is controlled by React state, so the preview below updates as you type.</p>
+    </div>
+    <div id="root"></div>
+    <div class="nav"><a href="../a4/index.html">← Assignment 4</a><a href="../a6/index.html">Assignment 6 →</a></div>
+  </main>
+  <div class="wrap"><footer>Yash Babaso Toraskar · MIT World Peace University, Pune</footer></div>
+  <script type="text/babel">
+    const { useState } = React;
+    function App() {
+      const [f, setF] = useState({ name: "", email: "", course: "MCA", bio: "" });
+      const on = e => setF({ ...f, [e.target.name]: e.target.value });
+      return (
+        <div>
+          <div className="panel">
+            <label htmlFor="n">Name</label>
+            <input id="n" name="name" value={f.name} onChange={on} />
+            <label htmlFor="em">Email</label>
+            <input id="em" name="email" type="email" value={f.email} onChange={on} />
+            <label htmlFor="c">Course</label>
+            <select id="c" name="course" value={f.course} onChange={on}>
+              <option>MCA</option><option>MBA</option><option>B.Tech</option>
+            </select>
+            <label htmlFor="b">About you</label>
+            <textarea id="b" name="bio" rows="3" value={f.bio} onChange={on} />
+          </div>
+          <div className="panel">
+            <h2>Live preview</h2>
+            <dl className="pre">
+              <dt>Name</dt><dd>{f.name || "Not entered yet"}</dd>
+              <dt>Email</dt><dd>{f.email || "Not entered yet"}</dd>
+              <dt>Course</dt><dd>{f.course}</dd>
+              <dt>About</dt><dd>{f.bio || "Not entered yet"}</dd>
+            </dl>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

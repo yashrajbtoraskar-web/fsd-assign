@@ -13,34 +13,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 </head>
 <body>
-  <div class="bar">
-    <div class="wrap top">
-      <b>Lab on Full Stack Development</b>
-      <span class="code">MCA40290 · Assignment 4</span>
-    </div>
-  </div>
-
+  <div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 4</span></div></div>
   <main class="wrap">
     <div class="head">
       <span class="eyebrow">React · Props</span>
       <h1>React Profile Card</h1>
       <p>A single reusable <code>ProfileCard</code> component, rendered twice with different data passed in through props.</p>
     </div>
-
     <div id="root"></div>
-
     <div class="panel">
       <h2>How it works</h2>
-      <p>One <code>ProfileCard</code> component accepts <code>name</code>, <code>role</code>, <code>image</code>, <code>bio</code> and <code>tags</code> as props. The <code>App</code> component holds an array of people and renders one card per entry with <code>.map()</code>, so adding a new person never means writing new markup.</p>
+      <p style="color:var(--mute);margin:0">One <code>ProfileCard</code> component accepts <code>name</code>, <code>role</code>, <code>image</code>, <code>bio</code> and <code>tags</code> as props. <code>App</code> holds an array of people and renders one card per entry with <code>.map()</code>, so adding a new person never means writing new markup.</p>
     </div>
-
-    <div class="nav">
-      <a href="../assignment-3-form-validation/index.html">← Previous</a>
-      <a href="../assignment-5-controlled-react-form/index.html">Next →</a>
-    </div>
+    <div class="nav"><a href="../a3/index.html">← Assignment 3</a><a href="../a5/index.html">Assignment 5 →</a></div>
   </main>
-  <div class="wrap"><footer>MIT World Peace University, Pune</footer></div>
-
+  <div class="wrap"><footer>Yash Babaso Toraskar · MIT World Peace University, Pune</footer></div>
   <script type="text/babel">
     function ProfileCard({ name, role, image, bio, tags }) {
       return (
@@ -71,11 +58,7 @@
           tags: ["React", "JavaScript", "UI/UX"]
         }
       ];
-      return (
-        <div className="profiles">
-          {people.map(p => <ProfileCard key={p.name} {...p} />)}
-        </div>
-      );
+      return <div className="profiles">{people.map(p => <ProfileCard key={p.name} {...p} />)}</div>;
     }
 
     ReactDOM.createRoot(document.getElementById("root")).render(<App />);

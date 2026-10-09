@@ -1,6 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Form Validation | MCA40290</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 3</span></div></div><main class="wrap"><div class="head"><h1>Form Validation</h1><p class="task">Register with name, email, phone and password. Each field shows a specific error until it is fixed.</p></div><div class="panel"><form id="f" novalidate>
-<label for="name">Full name</label><input id="name" autocomplete="name"><p class="err"></p>
-<label for="email">Email</label><input id="email" type="email" autocomplete="email"><p class="err"></p>
-<label for="phone">Phone (10 digits)</label><input id="phone" inputmode="numeric" autocomplete="tel"><p class="err"></p>
-<label for="pw">Password</label><input id="pw" type="password" autocomplete="new-password"><p class="err"></p>
-<button style="margin-top:14px">Create account</button></form><div class="msg" id="ok" hidden>Account created. All fields are valid.</div></div></main><div class="wrap"><footer>MIT World Peace University, Pune</footer></div><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Form Validation | MCA40290</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bar"><div class="wrap top"><b>Lab on Full Stack Development</b><span class="code">MCA40290 · Assignment 3</span></div></div>
+  <main class="wrap">
+    <div class="head">
+      <span class="eyebrow">JavaScript · Validation</span>
+      <h1>Form Validation</h1>
+      <p>Register with name, email, phone and password. Each field shows a specific error until it's fixed.</p>
+    </div>
+    <div class="panel">
+      <form id="f" novalidate>
+        <label for="name">Full name</label><input id="name" autocomplete="name"><p class="err"></p>
+        <label for="email">Email</label><input id="email" type="email" autocomplete="email"><p class="err"></p>
+        <label for="phone">Phone (10 digits)</label><input id="phone" inputmode="numeric" autocomplete="tel"><p class="err"></p>
+        <label for="pw">Password</label><input id="pw" type="password" autocomplete="new-password"><p class="err"></p>
+        <button style="margin-top:14px">Create account</button>
+      </form>
+      <div class="msg" id="ok" hidden>Account created. All fields are valid.</div>
+    </div>
+    <div class="nav"><a href="../a2/index.html">← Assignment 2</a><a href="../a4/index.html">Assignment 4 →</a></div>
+  </main>
+  <div class="wrap"><footer>Yash Babaso Toraskar · MIT World Peace University, Pune</footer></div>
+  <script src="script.js"></script>
+</body>
+</html>

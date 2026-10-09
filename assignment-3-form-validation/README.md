@@ -1,4 +1,4 @@
-# Assignment 3: Form Validation
+# Assignment 3: JavaScript Form Validation
 Course MCA40290, Lab on Full Stack Development.
 
 Run: double-click `index.html`.
